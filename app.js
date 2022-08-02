@@ -7,15 +7,17 @@ const mysql = require('mysql');
 require('dotenv').config();
 
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5010;
 
 app.use(bodyParser.urlencoded({ extended: false }));
+
+app.use(bodyParser.json());
 
 app.use(express.static('public'));
 
 const handlebars = exphbs.create({ extname: '.hbs',});
 app.engine('.hbs', handlebars.engine);
-app.set('view engine', '.hbs');
+app.set('view engine', 'hbs');
 
 
 const pool = mysql.createPool({
